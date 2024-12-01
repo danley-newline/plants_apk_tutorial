@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_plant_app/constants.dart';
 import 'package:my_plant_app/ui/login_page.dart';
+import 'package:my_plant_app/ui/root_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -28,7 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             child: InkWell(
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const Login(),),);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const RootPage(),),);
               }, //To login screen
               child: const Text(
                 'Skip',
@@ -96,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         _pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
                       }
                     } else {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const Login(),),);
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const RootPage(),),);
                     }
                   });
                 },
