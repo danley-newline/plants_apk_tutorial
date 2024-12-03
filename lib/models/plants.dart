@@ -35,7 +35,7 @@ class Plant {
       humidity: 46,
       temperature: '21 - 25',
       imageUrl: 'assets/images/plant-one.png',
-      isFavorited: false,
+      isFavorited: true,
       description:
           'Plants are essential to life on Earth. They produce oxygen through photosynthesis, which humans',
     ),
