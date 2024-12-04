@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     width: size.width * .9,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(45, 6, 81, 9),
+                      color: Constants.opacityPrimaryColor1,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                     width: 200,
                     margin: const EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(132, 41, 110, 72),
+                      color: Constants.opacityPrimaryColor08,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Stack(
@@ -209,7 +209,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               height: size.height * .5,
@@ -220,16 +219,71 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(179, 41, 110, 72),
+                      color: Constants.opacityPrimaryColor1,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     height: 80.0,
                     padding: const EdgeInsets.only(left: 10, top: 10),
                     margin: const EdgeInsets.only(bottom: 10, top: 10),
                     width: size.width,
-                    
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Container(
+                              width: 60.0,
+                              height: 60.0,
+                              decoration: BoxDecoration(
+                                color: Constants.opacityPrimaryColor08,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 5,
+                              left: 0,
+                              right: 0,
+                              child: SizedBox(
+                                height: 80.0,
+                                child: Image.asset(_plantList[index].imageUrl),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 5,
+                              left: 80,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(_plantList[index].category),
+                                  Text(
+                                    _plantList[index].plantName,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      color: Constants.blackColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        Container(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Text("\$${_plantList[index].price.toString()}", style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Constants.primaryColor,
+                          ),),
+                        ),
+                      ],
+                    ),
                   );
-                }, ),
+                },
+              ),
             ),
           ],
         ),

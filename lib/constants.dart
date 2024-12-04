@@ -7,6 +7,8 @@ class Constants {
   
   static var primaryColor = const Color(0xff296e48);
   static var blackColor = Colors.black54;
+  static var opacityPrimaryColor08 = const Color(0xC3296E48);
+  static var opacityPrimaryColor1 = const Color(0x2E296E48);
 
   static var titleOne = "Learn more about plants";
   static var descriptionOne = "Read how to care for plants in our rich plants guide.";
