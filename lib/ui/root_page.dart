@@ -1,6 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_plant_app/constants.dart';
+import 'package:my_plant_app/models/plants.dart';
 import 'package:my_plant_app/ui/login_page.dart';
 import 'package:my_plant_app/ui/scan_page.dart';
 import 'package:my_plant_app/ui/screens/cart_page.dart';
@@ -17,15 +18,20 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  List<Plant> myFavorites = [];
+  List<Plant> myCart = [];
+
   int _bottomNavIndex = 0;
 
   //List of the pages
-  List<Widget> pages = const [
-    HomePage(),
-    FavoritePage(),
-    CartPage(),
-    ProfilePage()
-  ];
+  List<Widget> _widgetOptions () {
+    return  [
+      const HomePage(),
+      FavoritePage(favoritedPlants: myFavorites,),
+      CartPage(addedToCartPlants: myCart,),
+      const ProfilePage()
+    ];
+  }
 
   //List of the pages icons
   List<IconData> iconList = [
@@ -65,7 +71,7 @@ class _RootPageState extends State<RootPage> {
       ),
       body: IndexedStack(
         index: _bottomNavIndex,
-        children: pages,
+        children: _widgetOptions(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -92,7 +98,12 @@ class _RootPageState extends State<RootPage> {
         onTap: (index) {
           setState(() {
             _bottomNavIndex = index;
-          });
+            final List<Plant> favoritedPlants = Plant.getFavoritedPlants();
+            final List<Plant> addedToCartPlants = Plant.addedToCartPlant();
+
+            myFavorites = favoritedPlants;
+            myCart = addedToCartPlants.toSet().toList();
+          },);
         },
       ),
     );

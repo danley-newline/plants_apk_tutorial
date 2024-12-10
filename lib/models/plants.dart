@@ -10,6 +10,7 @@ class Plant {
   final String imageUrl;
   bool isFavorited;
   final String description;
+  bool isSelected;
 
   Plant(
       {required this.plantId,
@@ -22,7 +23,8 @@ class Plant {
       required this.temperature,
       required this.imageUrl,
       required this.isFavorited,
-      required this.description});
+      required this.description,
+      required this.isSelected});
 
   static List<Plant> plantList = [
     Plant(
@@ -38,6 +40,7 @@ class Plant {
       isFavorited: true,
       description:
           'Plants are essential to life on Earth. They produce oxygen through photosynthesis, which humans',
+      isSelected: false,
     ),
     Plant(
       plantId: 1,
@@ -52,6 +55,7 @@ class Plant {
       isFavorited: false,
       description:
           'and animals need to breathe. There are many types of plants, from towering trees to small grasses',
+      isSelected: false,
     ),
     Plant(
       plantId: 2,
@@ -66,6 +70,7 @@ class Plant {
       isFavorited: false,
       description:
           'and animals need to breathe. There are many types of plants, from towering trees to small grasses',
+      isSelected: false,
     ),
     Plant(
       plantId: 3,
@@ -80,6 +85,7 @@ class Plant {
       isFavorited: false,
       description:
           'and animals need to breathe. There are many types of plants, from towering trees to small grasses',
+      isSelected: false,
     ),
     Plant(
       plantId: 4,
@@ -94,6 +100,7 @@ class Plant {
       isFavorited: false,
       description:
           'and animals need to breathe. There are many types of plants, from towering trees to small grasses',
+      isSelected: false,
     ),
     Plant(
       plantId: 5,
@@ -108,6 +115,7 @@ class Plant {
       isFavorited: false,
       description:
           'and animals need to breathe. There are many types of plants, from towering trees to small grasses',
+      isSelected: false,
     ),
     Plant(
       plantId: 6,
@@ -122,6 +130,7 @@ class Plant {
       isFavorited: false,
       description:
           'and animals need to breathe. There are many types of plants, from towering trees to small grasses',
+      isSelected: false,
     ),
     Plant(
       plantId: 7,
@@ -136,6 +145,7 @@ class Plant {
       isFavorited: false,
       description:
           'and animals need to breathe. There are many types of plants, from towering trees to small grasses',
+      isSelected: false,
     ),
     Plant(
       plantId: 8,
@@ -150,6 +160,20 @@ class Plant {
       isFavorited: false,
       description:
           'and animals need to breathe. There are many types of plants, from towering trees to small grasses',
+      isSelected: false,
     ),
   ];
+
+  //Get the favorites items
+  static List<Plant> getFavoritedPlants() {
+    List<Plant> _travelList = Plant.plantList;
+    return _travelList.where((element) => element.isFavorited == true).toList();
+  }
+
+  //Get the cart items
+  static List<Plant> addedToCartPlant() {
+    List<Plant> _selectedPlants = Plant.plantList;
+    return _selectedPlants.where((element) => element.isSelected == true).toList();
+  }
+
 }
