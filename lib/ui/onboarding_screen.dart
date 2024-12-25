@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_plant_app/constants.dart';
 import 'package:my_plant_app/ui/login_page.dart';
 import 'package:my_plant_app/ui/root_page.dart';
+import 'package:my_plant_app/ui/signin_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -29,7 +30,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             child: InkWell(
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const RootPage(),),);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const SignIn(),
+                  ),
+                );
               }, //To login screen
               child: const Text(
                 'Skip',
@@ -87,17 +93,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 shape: BoxShape.circle,
                 color: Constants.primaryColor,
               ),
-
               child: IconButton(
                 onPressed: () {
                   setState(() {
                     if (currentIndex < 2) {
                       currentIndex++;
                       if (currentIndex < 3) {
-                        _pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+                        _pageController.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn);
                       }
                     } else {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const RootPage(),),);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const SignIn(),
+                        ),
+                      );
                     }
                   });
                 },
